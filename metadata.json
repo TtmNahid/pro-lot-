@@ -1,0 +1,5 @@
+{
+  "name": "Crypto Precision Calculator",
+  "description": "A professional lot size calculator for crypto assets based on risk amount and stop loss distance.",
+  "requestFramePermissions": []
+}
