@@ -8,6 +8,10 @@ interface Props {
 }
 
 const InstrumentDetails: React.FC<Props> = ({ result, instrument, riskCash }) => {
+  // If result is invalid, use red text
+  const lotColor = result && !result.isValid ? 'text-red-500' : 'text-white';
+  const subTextColor = result && !result.isValid ? 'text-red-400' : 'text-slate-300';
+
   return (
     <div className="h-full flex flex-col gap-6">
       
@@ -23,7 +27,7 @@ const InstrumentDetails: React.FC<Props> = ({ result, instrument, riskCash }) =>
         {result ? (
            <div className="text-center">
              <div className="flex items-baseline justify-center gap-2">
-                <span className="text-7xl font-bold text-white font-mono tracking-tighter drop-shadow-2xl">
+                <span className={`text-7xl font-bold ${lotColor} font-mono tracking-tighter drop-shadow-2xl`}>
                   {result.lots}
                 </span>
                 <span className="text-xl text-slate-500 font-bold uppercase">Lots</span>
@@ -60,7 +64,7 @@ const InstrumentDetails: React.FC<Props> = ({ result, instrument, riskCash }) =>
         {/* Standard Lots */}
         <div className="bg-[#0B0E14] border border-slate-800 rounded-lg p-4 flex flex-col items-center justify-center shadow-inner">
            <span className="text-[10px] text-slate-500 uppercase font-bold tracking-wider mb-1">Standard Lots</span>
-           <span className="text-xl font-bold text-white font-mono">
+           <span className={`text-xl font-bold font-mono ${result && !result.isValid ? 'text-red-400' : 'text-white'}`}>
              {result ? result.lots : '0'}
            </span>
         </div>
@@ -68,7 +72,7 @@ const InstrumentDetails: React.FC<Props> = ({ result, instrument, riskCash }) =>
         {/* Mini Lots (10x) */}
         <div className="bg-[#0B0E14] border border-slate-800 rounded-lg p-4 flex flex-col items-center justify-center shadow-inner">
            <span className="text-[10px] text-slate-500 uppercase font-bold tracking-wider mb-1">Mini Lots</span>
-           <span className="text-xl font-bold text-slate-300 font-mono">
+           <span className={`text-xl font-bold font-mono ${subTextColor}`}>
              {result ? (result.lots * 10).toFixed(1).replace(/\.0$/, '') : '0'}
            </span>
         </div>
@@ -76,7 +80,7 @@ const InstrumentDetails: React.FC<Props> = ({ result, instrument, riskCash }) =>
         {/* Micro Lots (100x) */}
          <div className="bg-[#0B0E14] border border-slate-800 rounded-lg p-4 flex flex-col items-center justify-center shadow-inner">
            <span className="text-[10px] text-slate-500 uppercase font-bold tracking-wider mb-1">Micro Lots</span>
-           <span className="text-xl font-bold text-slate-300 font-mono">
+           <span className={`text-xl font-bold font-mono ${subTextColor}`}>
              {result ? (result.lots * 100).toFixed(0) : '0'}
            </span>
         </div>

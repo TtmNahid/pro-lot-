@@ -159,11 +159,29 @@ const Calculator: React.FC<CalculatorProps> = ({
                   />
                 </div>
                 <div>
-                  <label className="block text-slate-500 text-xs font-bold uppercase mb-1">Lot Step (Precision)</label>
+                  <label className="block text-slate-500 text-xs font-bold uppercase mb-1">Lot Step</label>
                    <input
                     type="text"
                     readOnly
                     value={instrument.stepSize}
+                    className="w-full bg-[#0B0E14]/50 border border-slate-700 text-slate-400 rounded p-2 text-sm"
+                  />
+                </div>
+                <div>
+                  <label className="block text-slate-500 text-xs font-bold uppercase mb-1">Min Lot Size</label>
+                  <input
+                    type="text"
+                    readOnly
+                    value={instrument.minSize}
+                    className="w-full bg-[#0B0E14]/50 border border-slate-700 text-slate-400 rounded p-2 text-sm"
+                  />
+                </div>
+                <div>
+                  <label className="block text-slate-500 text-xs font-bold uppercase mb-1">Max Lot Size</label>
+                   <input
+                    type="text"
+                    readOnly
+                    value={instrument.maxSize}
                     className="w-full bg-[#0B0E14]/50 border border-slate-700 text-slate-400 rounded p-2 text-sm"
                   />
                 </div>
